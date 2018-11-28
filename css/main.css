@@ -1,0 +1,33 @@
+body {
+    font-family: "Arial";
+    
+}
+
+.container {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+.col-3 {
+    width: 32.5%;
+    display: inline-table;
+    padding: 5px;
+}
+
+.info {
+    background-color: rgb(192, 150, 73);
+    color: white;
+}
+
+.game {
+    background-color: rgb(80, 80, 80);
+    color: white;
+    text-align: center;
+}
+
+.upgrade {
+    background-color: rgb(192, 150, 73);
+    color: white;
+    text-align: center;
+}

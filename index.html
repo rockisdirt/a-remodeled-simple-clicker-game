@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Clicker Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/main.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-3 info">
+                <h1 style="text-align: center">INFO</h1>
+                <br>
+                <p id="Iron">Iron: 0</p>
+                <p id="Gold">Gold: 0</p>
+                <p id="Money">Money: 0€</p>
+                <p id="LevelIron">Iron Level: 1</p>
+                <p id="LevelGold">Gold Level: 0</p>
+                <p id="wLevelIron">Worker Iron Level: 0</p>
+                <p id="wLevelGold">Worker Gold Level: 0</p>
+            </div>
+
+            <div class="col-3 game">
+                <h1 style="text-align: center">Clicker Game</h1>
+                <br>
+                <div class="miners">
+                    <button id="ironMine">Mine Iron <br> 1</button>
+                    <button id="goldMine">Mine Gold <br> 0</button>
+                </div>
+                <br>
+                <div class="shop">
+                    <button id="ironSell">Sell All Iron <br> 1 Iron = 1€</button>
+                    <button id="goldSell">Sell All Gold <br> 1 Gold = 5€</button>
+                </div>
+            </div>
+
+            <div class="col-3 upgrade">
+                <h1 style="text-align: center">Upgrade</h1>
+                <br>
+                <div class="minersUpgrade">
+                    <button id="ironMineUP">Upgrade Mine Iron <br> 100€</button>
+                    <button id="goldMineUP">Upgrade Mine Gold <br> 500€</button>
+                </div>
+                <br>
+                <div class="workersUpgrade">
+                        <button id="wironSellUP">Upgrade Worker Iron Level <br> 1000€</button>
+                        <button id="wgoldSellUP">Upgrade Worker Gold Level <br> 2500€</button>
+                    </div>
+                <br>
+                <div class="shopUpgrade">
+                    <button id="ironSellUP">Upgrade Iron Value <br> 10000€</button>
+                    <button id="goldSellUP">Upgrade Gold Value <br> 25000€</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="js/app.js"></script>
+</html>
