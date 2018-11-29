@@ -15,4 +15,5 @@ Just download the files and open index.html
 
 ### Try it
 
-You can try the game first at this link: https://pointideas.000webhostapp.com/simple-clicker/index.html
+You can try the game first at this link:</br>
+[a link](https://pointideas.000webhostapp.com/simple-clicker/index.html)
