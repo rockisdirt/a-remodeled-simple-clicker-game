@@ -113,9 +113,13 @@ buttonIronMineUP.addEventListener('click', function() {
 });
 
 buttonGoldMineUP.addEventListener('click', function() {
-    if (money >= (goldLevel) * 500 && goldLevel > 0) {
-        money -= (goldLevel) * 500;
-        goldLevel++;
+    if (money >= (goldLevel) * 500) {
+		if (goldLevel == 0) {
+			money -= (goldLevel + 1) * 500;
+		} else {
+			money -= (goldLevel) * 500;
+		}     
+		goldLevel++;
 
         update();
     }
