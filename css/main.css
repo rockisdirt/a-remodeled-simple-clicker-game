@@ -1,30 +1,98 @@
 body {
     font-family: "Arial";
-    background-color: rgb(41, 41, 41);
+    font-size: 20px;
+    background-color: rgb(36, 36, 36);
 }
 
 button {
+    width: 150px;
     padding: 5px;
     margin-top: 5px;
     outline:0;
     border: 0;
-    border-radius: 10px;
-    background-color: rgb(0, 153, 0);
+    /* border-radius: 20px 5px 20px 5px; */
+    font-size: 15px;
+}
+
+/*------------------------------------------------------*/
+
+.buttonIron {
+    background-color: rgb(119, 119, 119);
     color: white;
     transition: box-shadow 0.5s ease-out, background-color 0.5s ease-out;
 }
 
-button:hover {
+.buttonIron:hover {
     transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in;
-    background-color: rgb(3, 139, 3);
+    background-color: rgb(104, 104, 104);
     cursor: pointer;
-    box-shadow: 0 7px 13px 0 rgba(117, 117, 117, 0.24),0 17px 50px 0 rgba(112, 112, 112, 0.19);
+    box-shadow: 0 7px 13px 0 rgba(117, 117, 117, 0.24);
 }
 
-button:active {
-    transition: background-color 0.1s ease-in;
-    background-color: rgb(12, 75, 0);
+.buttonIron:active {
+    transition: background-color 0.05s ease-in;
+    background-color: rgb(22, 22, 22);
 }
+
+
+.buttonGold {
+    background-color: rgb(255, 174, 0);
+    color: white;
+    transition: box-shadow 0.5s ease-out, background-color 0.5s ease-out;
+}
+
+.buttonGold:hover {
+    transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in;
+    background-color: rgb(221, 133, 0);
+    cursor: pointer;
+    box-shadow: 0 7px 13px 0 rgba(255, 120, 79, 0.24);
+}
+
+.buttonGold:active {
+    transition: background-color 0.05s ease-in;
+    background-color: rgb(104, 55, 0);
+}
+
+
+.buttonSell {
+    background-color: rgb(27, 190, 22);
+    color: white;
+    transition: box-shadow 0.5s ease-out, background-color 0.5s ease-out;
+}
+
+.buttonSell:hover {
+    transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in;
+    background-color: rgb(17, 145, 0);
+    cursor: pointer;
+    box-shadow: 0 7px 13px 0 rgba(9, 255, 0, 0.24);
+}
+
+.buttonSell:active {
+    transition: background-color 0.05s ease-in;
+    background-color: rgb(10, 63, 0);
+}
+
+
+.buttonUpgrade {
+    background-color: rgb(14, 85, 238);
+    color: white;
+    transition: box-shadow 0.5s ease-out, background-color 0.5s ease-out;
+}
+
+.buttonUpgrade:hover {
+    transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in;
+    background-color: rgb(0, 46, 145);
+    cursor: pointer;
+    box-shadow: 0 7px 13px 0 rgba(0, 47, 255, 0.24);
+}
+
+.buttonUpgrade:active {
+    transition: background-color 0.05s ease-in;
+    background-color: rgb(0, 1, 63);
+}
+
+/*------------------------------------------------------*/
+
 
 .container {
     width: 100%;
@@ -45,7 +113,7 @@ button:active {
 }
 
 .infomore {
-    padding: 10px;
+    margin-left: 10px;
 }
 
 .game {
