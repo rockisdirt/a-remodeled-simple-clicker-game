@@ -5,7 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Clicker Game</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/notyf/notyf.min.css" />
         <link rel="stylesheet" href="css/main.css" />
+
+        <script src="js/notyf/notyf.min.js"></script>
+        <script src="js/app.js"></script>
     </head>
     <body>
         <div class="container">
@@ -13,13 +17,11 @@
                 <h1 style="text-align: center">INFO</h1>
                 <br>
                 <div class="infomore">
-                    <p id="Iron"><b>Iron</b>: 0</p>
-                    <p id="Gold"><b>Gold</b>: 0</p>
-                    <p id="Money"><b>Money</b>: 0€</p>
-                    <p id="LevelIron"><b>Iron Level</b>: 1</p>
-                    <p id="LevelGold"><b>Gold Level</b>: 0</p>
-                    <p id="wLevelIron"><b>Worker Iron Level</b>: 0</p>
-                    <p id="wLevelGold"><b>Worker Gold Level</b>: 0</p>
+                    <b>Iron:</b> <span id="Iron">0</span><br>
+                    <b>Gold:</b> <span id="Gold">0</span><br>
+                    <b>Money:</b> <span id="Money">0</span>€<br>
+                    <b>Iron Level:</b> <span id="LevelIron">1</span><br>
+                    <b>Gold Level:</b> <span id="LevelGold">0</span><br>
                 </div>
             </div>
 
@@ -27,13 +29,13 @@
                 <h1 style="text-align: center">Clicker Game</h1>
                 <br>
                 <div class="miners">
-                    <button id="ironMine">Mine Iron <br> 1</button>
-                    <button id="goldMine">Mine Gold <br> 0</button>
+                    <button class="buttonIron" id="ironMine">Mine Iron <br> 1</button>
+                    <button class="buttonGold" id="goldMine">Mine Gold <br> 0</button>
                 </div>
                 <br>
                 <div class="shop">
-                    <button id="ironSell">Sell All Iron <br> 1 Iron = 1€</button>
-                    <button id="goldSell">Sell All Gold <br> 1 Gold = 5€</button>
+                    <button class="buttonSell" id="ironSell">Sell All Iron <br> 1 Iron = 1€</button>
+                    <button class="buttonSell" id="goldSell">Sell All Gold <br> 1 Gold = 5€</button>
                 </div>
             </div>
 
@@ -41,21 +43,11 @@
                 <h1 style="text-align: center">Upgrade</h1>
                 <br>
                 <div class="minersUpgrade">
-                    <button id="ironMineUP">Upgrade Mine Iron <br> 100€</button>
-                    <button id="goldMineUP">Upgrade Mine Gold <br> 500€</button>
+                    <button class="buttonUpgrade" id="ironMineUP">Upgrade Mine Iron <br> 100€</button>
+                    <button class="buttonUpgrade" id="goldMineUP">Upgrade Mine Gold <br> 500€</button>
                 </div>
                 <br>
-                <div class="workersUpgrade">
-                        <button id="wironSellUP">Upgrade Worker Iron Level <br> 1000€</button>
-                        <button id="wgoldSellUP">Upgrade Worker Gold Level <br> 2500€</button>
-                    </div>
-                <br>
-                <div class="shopUpgrade">
-                    <button id="ironSellUP">Upgrade Iron Value <br> 10000€</button>
-                    <button id="goldSellUP">Upgrade Gold Value <br> 25000€</button>
-                </div>
             </div>
         </div>
     </body>
-    <script src="js/app.js"></script>
 </html>
