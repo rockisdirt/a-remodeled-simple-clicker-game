@@ -1,31 +1,33 @@
-window.addEventListener('load', function(){
+window.onload = function(){
+    const notyf = new Notyf();
+
+    if (/Mobi/.test(navigator.userAgent)) {
+        if(window.innerHeight > window.innerWidth){
+            alert("Rotate you device for better playing!");
+        }
+    }
+
+    // Buttons from mid <div>
     const buttonIronMine = document.getElementById('ironMine');
     const buttonGoldMine = document.getElementById('goldMine');
     const buttonIronSell = document.getElementById('ironSell');
     const buttonGoldSell = document.getElementById('goldSell');
+    //
     
-    
+    // Buttons from upgrade <div>
     const buttonIronMineUP = document.getElementById('ironMineUP');
     const buttonGoldMineUP = document.getElementById('goldMineUP');
+    //
     
-    
-    const buttonwIronSellUP = document.getElementById('wironSellUP');
-    const buttonwGoldSellUP = document.getElementById('wgoldSellUP');
-    
-    
-    const buttonIronSellUP = document.getElementById('ironSellUP');
-    const buttonGoldSellUP = document.getElementById('goldSellUP');
-    
-    
+    // Info <p>
     const infoIron = document.getElementById('Iron');
     const infoGold = document.getElementById('Gold');
     const infoMoney = document.getElementById('Money');
     const levelIron = document.getElementById('LevelIron');
     const levelGold = document.getElementById('LevelGold');
-    const wlevelIron = document.getElementById('wLevelIron');
-    const wlevelGold = document.getElementById('wLevelGold');
+    //
     
-    
+    // Variables
     let money = 0;
     let iron = 0;
     let gold = 0;
@@ -34,21 +36,15 @@ window.addEventListener('load', function(){
     
     let ironValue = 1;
     let goldValue = 5;
+    //
     
-    let ironUPValue = 1;
-    let goldUPValue = 1;
-    
-    let workerLevelIron = 0;
-    let workerLevelGold = 0;
-    
+    // Functions
     function update() {
-        infoIron.innerHTML = "<b>Iron</b>: " + iron;
-        infoGold.innerHTML = "<b>Gold</b>: " + gold;
-        infoMoney.innerHTML = "<b>Money</b>: " + money + "€";
-        levelIron.innerHTML = "<b>Iron Level</b>: " + ironLevel;
-        levelGold.innerHTML = "<b>Gold Level</b>: " + goldLevel;
-        wlevelIron.innerHTML = "<b>Worker Iron Level</b>: " + workerLevelIron;
-        wlevelGold.innerHTML = "<b>Worker Gold Level</b>: " + workerLevelGold;
+        infoIron.innerHTML = iron;
+        infoGold.innerHTML = gold;
+        infoMoney.innerHTML = money;
+        levelIron.innerHTML = ironLevel;
+        levelGold.innerHTML = goldLevel;
     
         buttonIronMine.innerHTML = "Mine Iron <br> " + ironLevel;
         buttonGoldMine.innerHTML = "Mine Gold <br> " + goldLevel;
@@ -56,146 +52,94 @@ window.addEventListener('load', function(){
         buttonIronSell.innerHTML = "Sell All Iron <br> 1 Iron = " + ironValue + "€";
         buttonGoldSell.innerHTML = "Sell All Gold <br> 1 Gold = " + goldValue + "€";
     
-        buttonIronMineUP.innerHTML = "Upgrade Mine Iron <br> " + ironLevel * 100 + "€";
-        if (goldLevel > 0) {
-            buttonGoldMineUP.innerHTML = "Upgrade Mine Gold <br> " + goldLevel * 500 + "€";
-        }
-    
-        if (workerLevelIron > 0) {
-            buttonwIronSellUP.innerHTML = "Upgrade Worker Iron Level <br> " + workerLevelIron * 1000 + "€";
-        }
-        if (workerLevelGold > 0) {
-            buttonwGoldSellUP.innerHTML = "Upgrade Worker Gold Level <br> " + workerLevelGold * 2500 + "€";
-        }
-    
-        buttonIronSellUP.innerHTML = "Upgrade Iron Value <br> " + ironUPValue * 10000 + "€";
-        buttonGoldSellUP.innerHTML = "Upgrade Gold Value <br> " + goldUPValue * 25000 + "€";
+        buttonIronMineUP.innerHTML = "Upgrade Mine Iron <br> " + getPriceMineUP("Iron") + "€";
+        buttonGoldMineUP.innerHTML = "Upgrade Mine Gold <br> " + getPriceMineUP("Gold") + "€";
     }
-    
-    buttonIronMine.addEventListener('click', function() {
-        iron+=ironLevel;
-    
-        update();
-    });
-    
-    buttonGoldMine.addEventListener('click', function() {
-        if (goldLevel >= 1) {
-            gold+=goldLevel;
-        }
-    
-        update();
-    });
-    
-    buttonIronSell.addEventListener('click', function() {
-        if (iron > 0) {
-            money+=ironValue * iron;
-            iron-=iron;
-    
-            update();
-        }
-    });
-    
-    buttonGoldSell.addEventListener('click', function() {
-        if (gold > 0) {
-            money+=goldValue * gold;
-            gold-=gold;
-    
-            update();
-        }
-    });
-    
-    buttonIronMineUP.addEventListener('click', function() {
-        if (money >= (ironLevel) * 100) {
-            money -= (ironLevel) * 100;
-            ironLevel++;
-    
-            update();
-        }
-    });
-    
-    buttonGoldMineUP.addEventListener('click', function() {
-        if (goldLevel == 0) {
-            if (money >= (goldLevel + 1) * 500) {
-                money -= (goldLevel + 1) * 500;
-                goldLevel++;
-            }
-        } else {
-            if (money >= (goldLevel) * 500) {
-                money -= (goldLevel) * 500;
-                goldLevel++;
-            }
-        }
 
-        update();
-    });
-    
-    buttonIronSellUP.addEventListener('click', function() {
-        if (money >= ironUPValue * 10000) {
-            money-=ironUPValue * 10000;
-            ironUPValue++;
-            ironValue++;
-            update();
-        }
-    });
-    
-    buttonGoldSellUP.addEventListener('click', function() {
-        if (money >= goldUPValue * 25000) {
-            money-=goldUPValue * 25000;
-            goldUPValue++;
-            goldValue++;
-            update();
-        }
-    });
-    
-    buttonwIronSellUP.addEventListener('click', function() {
-        if (workerLevelIron > 0) {
-            if (money >= workerLevelIron * 1000) {
-                money-=workerLevelIron * 1000;
-                
-                
-                workerLevelIron++;
+    function Mine(type) {
+        if (type == "Iron") {
+            if (ironLevel > 0) {
+                iron += ironLevel;
+            } else {
+                notyf.alert("Increase your iron mine level first!");
             }
-    
-        } else {
-            if (money >= (workerLevelIron + 1) * 1000) {
-                money-=(workerLevelIron + 1) * 1000;
-                
-                
-                workerLevelIron++;
+        } else if (type == "Gold") {
+            if (goldLevel > 0) {
+                gold += goldLevel;
+            } else {
+                notyf.alert("Increase your gold mine level first!");
             }
         }
-        
-        update();
-    });
-    
-    buttonwGoldSellUP.addEventListener('click', function() {
-        if (workerLevelGold > 0) {
-            if (money >= workerLevelGold * 2500) {
-                money-=workerLevelGold * 2500;
-                
-                workerLevelGold++;
+    }
+
+    function MineUpgrade(type) {
+        if (type == "Iron") {
+            if (money >= getPriceMineUP("Iron")) {
+                money -= getPriceMineUP("Iron");
+                ironLevel++;
+
+                notyf.confirm("Increased iron mine level!");
+            } else {
+                notyf.alert("You don't have enough money!");
             }
-    
-        } else {
-            if (money >= (workerLevelGold + 1) * 2500) {
-                money-=(workerLevelGold + 1) * 2500;
-                
-                workerLevelGold++;
+        } else if (type == "Gold") {
+            if (money >= getPriceMineUP("Gold")) {
+                money -= getPriceMineUP("Gold");
+                goldLevel++;
+
+                notyf.confirm("Increased gold mine level!");
+            } else {
+                notyf.alert("You don't have enough money!");
             }
         }
-        
-        update();
-    });
-    
-    setInterval (function () {
-        if (workerLevelIron > 0) {
-            iron += workerLevelIron * ironLevel;
+    }
+
+    function ItemSell(type) {
+        if (type == "Iron") {
+            if (iron > 0) {
+                notyf.confirm("You have earned " + ironValue * iron + "€ selling " + iron + " of iron!");
+
+                money += ironValue * iron;
+                iron -= iron;
+            } else {
+                notyf.alert("You don't have any iron!");
+            }
+        } else if (type == "Gold") {
+            if (gold > 0) {
+                notyf.confirm("You have earned " + goldValue * gold + "€ selling " + gold + " of gold!");
+
+                money += goldValue * gold;
+                gold -= gold;
+            } else {
+                notyf.alert("You don't have any gold!");
+            }
         }
-    
-        if (workerLevelGold > 0 && goldLevel > 0) {
-            gold += workerLevelGold * goldLevel;
+    }
+
+    function getPriceMineUP(type) {
+        if (type == "Iron") {
+            return ironLevel * 100;
+        } else if (type == "Gold") {
+            return (goldLevel + 1) * 500;
         }
+    }
+    //
     
-        update();
-    }, 1000);
-});
+    // Handle clicks
+    buttonIronMine.addEventListener('mousedown', () => Mine("Iron"));
+    
+    buttonGoldMine.addEventListener('mousedown', () => Mine("Gold"));
+    
+    buttonIronSell.addEventListener('mousedown', () => ItemSell("Iron"));
+    
+    buttonGoldSell.addEventListener('mousedown', () => ItemSell("Gold"));
+    
+    buttonIronMineUP.addEventListener('mousedown', () => MineUpgrade("Iron"));
+    
+    buttonGoldMineUP.addEventListener('mousedown', () => MineUpgrade("Gold"));
+    //
+    
+    ////// Update() timer //////
+    setInterval (() => update(), 50);
+    ///////////////////////////
+}
