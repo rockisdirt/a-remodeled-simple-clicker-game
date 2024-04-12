@@ -8,86 +8,86 @@ window.onload = function(){
     }
 
     // Buttons from mid <div>
-    const buttonIronMine = document.getElementById('ironMine');
-    const buttonGoldMine = document.getElementById('goldMine');
-    const buttonIronSell = document.getElementById('ironSell');
-    const buttonGoldSell = document.getElementById('goldSell');
+    const buttondustgrab = document.getElementById('dustgrb');
+    const buttonrockMine = document.getElementById('rockMine');
+    const buttondustSell = document.getElementById('dustSell');
+    const buttonrockSell = document.getElementById('rockSell');
     //
     
     // Buttons from upgrade <div>
-    const buttonIronMineUP = document.getElementById('ironMineUP');
-    const buttonGoldMineUP = document.getElementById('goldMineUP');
+    const buttondustgrabUP = document.getElementById('dustgrabUP');
+    const buttonrockMineUP = document.getElementById('rockMineUP');
     //
     
     // Info <p>
-    const infoIron = document.getElementById('Iron');
-    const infoGold = document.getElementById('Gold');
+    const infodust = document.getElementById('dust');
+    const inforock = document.getElementById('rock');
     const infoMoney = document.getElementById('Money');
-    const levelIron = document.getElementById('LevelIron');
-    const levelGold = document.getElementById('LevelGold');
+    const leveldust = document.getElementById('Leveldust');
+    const levelrock = document.getElementById('Levelrock');
     //
     
     // Variables
     let money = 0;
-    let iron = 0;
-    let gold = 0;
-    let ironLevel = 1;
-    let goldLevel = 0;
+    let dust = 0;
+    let rock = 0;
+    let dustLevel = 1;
+    let rockLevel = 0;
     
-    let ironValue = 1;
-    let goldValue = 5;
+    let dustValue = 1;
+    let rockValue = 5;
     //
     
     // Functions
     function update() {
-        infoIron.innerHTML = iron;
-        infoGold.innerHTML = gold;
+        infodust.innerHTML = dust;
+        inforock.innerHTML = rock;
         infoMoney.innerHTML = money;
-        levelIron.innerHTML = ironLevel;
-        levelGold.innerHTML = goldLevel;
+        levelIron.innerHTML = dustLevel;
+        levelGold.innerHTML = rockLevel;
     
-        buttonIronMine.innerHTML = "Mine Iron <br> " + ironLevel;
-        buttonGoldMine.innerHTML = "Mine Gold <br> " + goldLevel;
+        buttondustMine.innerHTML = "Mine dust <br> " + dustLevel;
+        buttonrockMine.innerHTML = "Mine rock <br> " + rockLevel;
     
-        buttonIronSell.innerHTML = "Sell All Iron <br> 1 Iron = " + ironValue + "€";
-        buttonGoldSell.innerHTML = "Sell All Gold <br> 1 Gold = " + goldValue + "€";
+        buttonIronSell.innerHTML = "Sell All Iron <br> 1 Iron = " + dustValue + "€";
+        buttonGoldSell.innerHTML = "Sell All Gold <br> 1 Gold = " + rockValue + "€";
     
-        buttonIronMineUP.innerHTML = "Upgrade Mine Iron <br> " + getPriceMineUP("Iron") + "€";
-        buttonGoldMineUP.innerHTML = "Upgrade Mine Gold <br> " + getPriceMineUP("Gold") + "€";
+        buttondustgrabUP.innerHTML = "Upgrade grab dust <br> " + getPricegrabUP("dust") + "€";
+        buttonrockMineUP.innerHTML = "Upgrade Mine rock <br> " + getPriceMineUP("rock") + "€";
     }
 
-    function Mine(type) {
-        if (type == "Iron") {
-            if (ironLevel > 0) {
-                iron += ironLevel;
+    function grab(type) {
+        if (type == "dust") {
+            if (dustLevel > 0) {
+                dust += dustLevel;
             } else {
-                notyf.alert("Increase your iron mine level first!");
+                notyf.alert("Increase your dust grab level first!");
             }
-        } else if (type == "Gold") {
-            if (goldLevel > 0) {
-                gold += goldLevel;
+        } else if (type == "rock") {
+            if (rockLevel > 0) {
+                rock += rockLevel;
             } else {
-                notyf.alert("Increase your gold mine level first!");
+                notyf.alert("Increase your rock mine level first!");
             }
         }
     }
 
     function MineUpgrade(type) {
-        if (type == "Iron") {
-            if (money >= getPriceMineUP("Iron")) {
-                money -= getPriceMineUP("Iron");
-                ironLevel++;
+        if (type == "dust") {
+            if (money >= getPricegrabUP("dust")) {
+                money -= getPricegrabUP("dust");
+                dustLevel++;
 
-                notyf.confirm("Increased iron mine level!");
+                notyf.confirm("Increased dust grab level!");
             } else {
                 notyf.alert("You don't have enough money!");
             }
-        } else if (type == "Gold") {
-            if (money >= getPriceMineUP("Gold")) {
-                money -= getPriceMineUP("Gold");
-                goldLevel++;
+        } else if (type == "rock") {
+            if (money >= getPriceMineUP("rock")) {
+                money -= getPriceMineUP("rock");
+                rockLevel++;
 
-                notyf.confirm("Increased gold mine level!");
+                notyf.confirm("Increased rock mine level!");
             } else {
                 notyf.alert("You don't have enough money!");
             }
@@ -95,48 +95,48 @@ window.onload = function(){
     }
 
     function ItemSell(type) {
-        if (type == "Iron") {
-            if (iron > 0) {
-                notyf.confirm("You have earned " + ironValue * iron + "€ selling " + iron + " of iron!");
+        if (type == "dust") {
+            if (dust > 0) {
+                notyf.confirm("You have earned " + dustValue * dust + "€ selling " + dust + " of dust!");
 
-                money += ironValue * iron;
-                iron -= iron;
+                money += dustValue * dust;
+                dust -= dust;
             } else {
-                notyf.alert("You don't have any iron!");
+                notyf.alert("You don't have any dust!");
             }
-        } else if (type == "Gold") {
-            if (gold > 0) {
-                notyf.confirm("You have earned " + goldValue * gold + "€ selling " + gold + " of gold!");
+        } else if (type == "rock") {
+            if (rock > 0) {
+                notyf.confirm("You have earned " + rockValue * rock + "€ selling " + rock + " of rock!");
 
-                money += goldValue * gold;
-                gold -= gold;
+                money += rockValue * rock;
+                rock -= rock;
             } else {
-                notyf.alert("You don't have any gold!");
+                notyf.alert("You don't have any rocks!");
             }
         }
     }
 
     function getPriceMineUP(type) {
-        if (type == "Iron") {
-            return ironLevel * 100;
-        } else if (type == "Gold") {
-            return (goldLevel + 1) * 500;
+        if (type == "dust") {
+            return dustLevel * 100;
+        } else if (type == "rock") {
+            return (rockLevel + 1) * 500;
         }
     }
     //
     
     // Handle clicks
-    buttonIronMine.addEventListener('mousedown', () => Mine("Iron"));
+    buttondustgrab.addEventListener('mousedown', () => grab("dust"));
     
-    buttonGoldMine.addEventListener('mousedown', () => Mine("Gold"));
+    buttonrockMine.addEventListener('mousedown', () => Mine("rock"));
     
-    buttonIronSell.addEventListener('mousedown', () => ItemSell("Iron"));
+    buttondustSell.addEventListener('mousedown', () => ItemSell("dust"));
     
-    buttonGoldSell.addEventListener('mousedown', () => ItemSell("Gold"));
+    buttonrockSell.addEventListener('mousedown', () => ItemSell("rock"));
     
-    buttonIronMineUP.addEventListener('mousedown', () => MineUpgrade("Iron"));
+    buttondustgrabUP.addEventListener('mousedown', () => grabUpgrade("dust"));
     
-    buttonGoldMineUP.addEventListener('mousedown', () => MineUpgrade("Gold"));
+    buttonrockMineUP.addEventListener('mousedown', () => MineUpgrade("rock"));
     //
     
     ////// Update() timer //////
