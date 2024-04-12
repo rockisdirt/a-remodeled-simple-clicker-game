@@ -43,14 +43,14 @@ window.onload = function(){
         infodust.innerHTML = dust;
         inforock.innerHTML = rock;
         infoMoney.innerHTML = money;
-        levelIron.innerHTML = dustLevel;
-        levelGold.innerHTML = rockLevel;
+        leveldust.innerHTML = dustLevel;
+        levelrock.innerHTML = rockLevel;
     
         buttondustMine.innerHTML = "Mine dust <br> " + dustLevel;
         buttonrockMine.innerHTML = "Mine rock <br> " + rockLevel;
     
-        buttonIronSell.innerHTML = "Sell All Iron <br> 1 Iron = " + dustValue + "€";
-        buttonGoldSell.innerHTML = "Sell All Gold <br> 1 Gold = " + rockValue + "€";
+        buttondustSell.innerHTML = "Sell All dust <br> 1 dust = " + dustValue + "€";
+        buttonrockSell.innerHTML = "Sell All rock <br> 1 rock = " + rockValue + "€";
     
         buttondustgrabUP.innerHTML = "Upgrade grab dust <br> " + getPricegrabUP("dust") + "€";
         buttonrockMineUP.innerHTML = "Upgrade Mine rock <br> " + getPriceMineUP("rock") + "€";
